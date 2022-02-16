@@ -15,13 +15,14 @@
   </head>
   <body>
     <h1>Value 4 Value Exchange</h1>
-    <p>Date = <span id=date></span></p>
-    <p>1 BTC = $<span id=usd-per-btc></span></p>
+    <p><span id=date></span> ago: 1 BTC = $<span id=usd-per-btc></span></p>
     <p>$0.25/hr ~ <span id=sat-rate></span> SAT/min</p>
+    <p><button id=update type="button" class="btn btn-dark">Update</button></p>
 
     <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js
       integrity=sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p
       crossorigin=anonymous></script>
+    <script src=luxon-2.3.0.min.js></script>
     <script src=main.js></script>
   </body>
 </html>
