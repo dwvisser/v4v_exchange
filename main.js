@@ -1,38 +1,32 @@
+function setUpdateEnabled(update_enabled) {
+    document.getElementById('update').disabled = !update_enabled;
+    document.getElementById('update-help').style.display =
+      update_enabled ? 'none' : '';
+}
+
 function showDuration(last_updated) {
-    let unit = 'milliseconds';
     let duration = luxon.Duration.fromMillis(luxon.DateTime.now() - last_updated);
-    let update = document.getElementById('update');
-    if (duration >= luxon.Duration.fromObject({ days: 1 })) {
-        unit = 'days';
-        update.disabled = false;
-    } else if (duration >= luxon.Duration.fromObject({ hours: 1 })) {
-        unit = 'hours';
-        update.disabled = false;
-    } else if (duration >= luxon.Duration.fromObject({ minutes: 1 })) {
-        unit = 'minutes';
+    let tempObject = duration.shiftTo('seconds').toObject();
+    tempObject.seconds = Math.round(tempObject.seconds);
+    duration = luxon.Duration.fromObject(tempObject);
+    if (duration >= luxon.Duration.fromObject({ minutes: 1 })) {
+        duration = duration.shiftTo('minutes', 'seconds');
         if (duration >= luxon.Duration.fromObject({ minutes: 2 })) {
-            update.disabled = false;
+            setUpdateEnabled(true);
         } else {
-            update.disabled = true;
+            setUpdateEnabled(false);
         }
-    } else if (duration >= luxon.Duration.fromObject({ seconds: 1 })) {
-        unit = 'seconds';
-        update.disabled = true;
     } else {
-        update.disabled = true;
+        setUpdateEnabled(false);
     }
-    let value = Math.floor(duration.as(unit));
-    if (value == 1) {
-        unit = unit.slice(0, -1);
-    }
-    return value + " " + unit;
+    return duration.toHuman();
 }
 
 let timeoutID = 0;
 
 function updateAgo(last_updated) {
     document.querySelector('#date').innerHTML = showDuration(last_updated);
-    timeoutID = setTimeout(updateAgo, 5000, last_updated);
+    timeoutID = setTimeout(updateAgo, 1000, last_updated);
 }
 
 function main() {
