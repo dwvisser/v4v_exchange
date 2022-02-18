@@ -1,4 +1,9 @@
-body {
+body, .accordion-button, .accordion-body {
   background-color: rgb(31, 39, 18);
   color: lightgray;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgb(82, 104, 48);
+  color: black;
 }
