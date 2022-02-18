@@ -1,23 +1,17 @@
-function setUpdateEnabled(update_enabled) {
-    document.getElementById('update').disabled = !update_enabled;
-    document.getElementById('update-help').style.display =
-      update_enabled ? 'none' : '';
+function modifyUpdateButton(seconds) {
+    const button = document.getElementById('update');
+    button.disabled = seconds < 120;
+    button.innerHTML = button.disabled ? "Can update in " + (120-seconds) + " seconds" : 'Update';
 }
 
 function showDuration(last_updated) {
     let duration = luxon.Duration.fromMillis(luxon.DateTime.now() - last_updated);
     let tempObject = duration.shiftTo('seconds').toObject();
     tempObject.seconds = Math.round(tempObject.seconds);
+    modifyUpdateButton(tempObject.seconds);
     duration = luxon.Duration.fromObject(tempObject);
     if (duration >= luxon.Duration.fromObject({ minutes: 1 })) {
         duration = duration.shiftTo('minutes', 'seconds');
-        if (duration >= luxon.Duration.fromObject({ minutes: 2 })) {
-            setUpdateEnabled(true);
-        } else {
-            setUpdateEnabled(false);
-        }
-    } else {
-        setUpdateEnabled(false);
     }
     return duration.toHuman();
 }
