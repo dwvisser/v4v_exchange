@@ -12,28 +12,35 @@
         crossorigin=anonymous>
     <link href=custom.css rel=stylesheet>
 
-    <title>Value 4 Value Exchange</title>
+    <title>Value 4 Value Calculator</title>
 </head>
 
 <body>
     <div class=container>
-        <h1>Value 4 Value Exchange</h1>
+        <h1>Value 4 Value Calculator</h1>
         <div class=row>
             <div class=col-12>As of <span id=date></span> ago</div>
         </div>
         <div class=row>
-            <div class=col-5>1 BTC</div>
-            <div class=col-2>=</div>
+            <div class=col-6>1 BTC</div>
+            <div class=col-1>=</div>
             <div class=col-5 id=usd-per-btc></div>
         </div>
         <div class=row>
-            <div class=col-5></div>
-            <div class=col-2>⇓</div>
+            <div class=col-6></div>
+            <div class=col-1>⇓</div>
             <div class=col-5></div>
         </div>
         <div class=row>
-            <div class=col-5>$0.25/hr</div>
-            <div class=col-2>≅</div>
+            <div class=col-6>
+                <div class="input-group mb-5">
+                    <span class=input-group-text>$</span>
+                    <input id=usd_per_hr class=form-control type=number aria-label="Hourly rate (to $0.01 precision)"
+                        placeholder="1.0" step="0.01" min=0>
+                    <span class=input-group-text>/hr</span>
+                </div>
+            </div>
+            <div class=col-1>≅</div>
             <div class=col-5><span id=sat-rate></span> SAT/min</div>
         </div>
         <div class=row>
@@ -51,11 +58,13 @@
                 <div id=collapseOne class="accordion-collapse collapse" aria-labelledby=headingOne
                     data-bs-parent=#accordionExample>
                     <div class=accordion-body>
-                        Value 4 Value is a new system for paying podcasters in Bitcoin for their content by
-                        the listening minute, over the
+                        <em>Value 4 Value</em> is a new system for paying podcasters in
+                        <a href=https://coin.info/bitcoin/>Bitcoin</a> for their content by the listening minute, using the
                         <a href=https://www.bitcoin.com/get-started/what-is-lightning-network />Lightning Network</a>.
-                        See the <a href=https://podcastindex.org/podcast/value4value>Podcast Index</a>
-                        for more info.
+                        The Podcast Index has
+                        <a href=https://podcastindex.org/podcast/value4value>more info about Value 4 Value</a>
+                        and can be used to find
+                        <a href=https://podcastindex.org/apps>supporting apps</a>.
                     </div>
                 </div>
             </div>
@@ -70,10 +79,9 @@
                     data-bs-parent=#accordionExample>
                     <div class=accordion-body>
                         I am not a crypto-enthusiast, and so tend to think in dollars, which feel more
-                        "real" to me than blockchain coinage. This page
-                        <a href=https://developers.coinbase.com/api/v2>pulls the current value</a> of BTC in USD, and
-                        determines how many SAT (100,000,000 SAT = 1 BTC) per minute equals 25¢ per hour of podcast
-                        listenting, which is the rate I currently find fair and affordable.
+                        "real" to me than blockchain coinage. This page pulls the current value of BTC in USD from
+                        <a href=https://developers.coinbase.com/api/v2>coinbase.com</a>, and
+                        converts your desired dollars per hour into SAT per minute (1 BTC = 100,000,000 SAT).
                     </div>
                 </div>
             </div>
