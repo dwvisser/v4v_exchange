@@ -36,12 +36,23 @@
                 <div class="input-group mb-5">
                     <span class=input-group-text>$</span>
                     <input id=usd_per_hr class=form-control type=number aria-label="Hourly rate (to $0.01 precision)"
-                        placeholder="1.0" step="0.01" min=0>
+                        placeholder="1.00" step="0.01" min=0>
                     <span class=input-group-text>/hr</span>
                 </div>
             </div>
             <div class=col-1>≅</div>
-            <div class=col-5><span id=sat-rate></span> SAT/min</div>
+            <div class=col-5><span id=sat-rate></span> SAT/min V4V</div>
+        </div>
+        <div class=row>
+            <div class=col-6>
+                <div class="input-group mb-5">
+                    <span class=input-group-text>$</span>
+                    <input id=boost_usd class=form-control type=number aria-label="Desired Boost $ (to $0.01 precision)"
+                        placeholder="1.00" step="0.01" min=0>
+                </div>
+            </div>
+            <div class=col-1>≅</div>
+            <div class=col-5><span id=boost-sat></span> SAT Boost</div>
         </div>
         <div class=row>
             <div class=col-12><button id=update type="button" class="btn btn-dark">Update</button></div>

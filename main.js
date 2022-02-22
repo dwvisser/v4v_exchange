@@ -24,30 +24,43 @@ function updateAgo(last_updated) {
     timeoutID = setTimeout(updateAgo, 1000, last_updated);
 }
 
-function modifyUsdRate() {
-    localStorage.setItem('usd_per_hr', document.getElementById('usd_per_hr').value);
-    calculateSatRate();
+function modifyInput(id_and_store_key) {
+    localStorage.setItem(id_and_store_key, document.getElementById(id_and_store_key).value);
+    calculateView();
 }
 
-function calculateSatRate() {
-    let sat_per_hour = getUsdPerHr() / usd_per_btc * 100000000;
-    document.querySelector('#sat-rate').innerHTML = Math.round(sat_per_hour / 60);
+function calculateView() {
+    const sat_per_btc = 100000000;
+    const sat_per_usd = sat_per_btc / usd_per_btc;
+    const sat_per_hour = getInput('usd_per_hr') * sat_per_usd;
+    document.getElementById('sat-rate').innerHTML = Math.round(sat_per_hour / 60); 
+    const boost_sat = getInput('boost_usd') * sat_per_usd;
+    document.getElementById('boost-sat').innerHTML = Math.round(boost_sat);
+}
+
+function modifyUsdRate() {
+    modifyInput('usd_per_hr');
+}
+
+function modifyBoostUsd() {
+    modifyInput('boost_usd');
 }
 
 function main() {
     doFetch();
     document.getElementById('update').addEventListener('click', doFetch);
     document.getElementById('usd_per_hr').addEventListener('change', modifyUsdRate);
+    document.getElementById('boost_usd').addEventListener('change', modifyBoostUsd);
 }
 
 
-function getUsdPerHr() {
-    let rval = localStorage.getItem('usd_per_hr');
+function getInput(id_and_store_key) {
+    let rval = localStorage.getItem(id_and_store_key);
     if (rval == null) {
-        localStorage.setItem('usd_per_hr', '1.00');
-        rval = localStorage.getItem('usd_per_hr');
+        localStorage.setItem(id_and_store_key, '1.00');
+        rval = localStorage.getItem(id_and_store_key);
     }
-    document.getElementById('usd_per_hr').value = rval;
+    document.getElementById(id_and_store_key).value = rval;
     return parseFloat(rval);
 }
 
@@ -61,7 +74,7 @@ async function doFetch() {
         updateAgo(last_updated);
         document.querySelector('#usd-per-btc').innerHTML = jsonValue.bpi.USD.rate;
         usd_per_btc = jsonValue.bpi.USD.rate_float;
-        calculateSatRate();
+        calculateView();
     } else {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
