@@ -19,17 +19,18 @@
     <div class=container>
         <h1>Value 4 Value Calculator</h1>
         <div class=row>
-            <div class=col-12>As of <span id=date></span> ago</div>
+            <div class=col-12><button id=update type="button" class="btn btn-dark">Update</button></div>
         </div>
         <div class=row>
-            <div class=col-6>1 BTC</div>
-            <div class=col-1>=</div>
-            <div class=col-5 id=usd-per-btc></div>
+            <div class=col-12>As of <span id=date></span> ago:</div>
         </div>
         <div class=row>
-            <div class=col-6></div>
-            <div class=col-1>⇓</div>
-            <div class=col-5></div>
+            <div class=col-1></div>
+            <div class=col-11><p>1 BTC = <span id=usd-per-btc></span></p></div>
+        </div>
+        <div class=row></div>
+        <div class=row>
+            <div class=col-12>To pay by the listening minute…</div>
         </div>
         <div class=row>
             <div class=col-6>
@@ -41,7 +42,10 @@
                 </div>
             </div>
             <div class=col-1>≅</div>
-            <div class=col-5><span id=sat-rate></span> SAT/min V4V</div>
+            <div class=col-5><span id=sat-rate></span> SAT/min</div>
+        </div>
+        <div class=row>
+            <div class=col-12>To give a one-time <a href=https://www.seetee.io/blog/2022-01-31-whats-in-a-boostagram>Boost</a>…</div>
         </div>
         <div class=row>
             <div class=col-6>
@@ -52,10 +56,7 @@
                 </div>
             </div>
             <div class=col-1>≅</div>
-            <div class=col-5><span id=boost-sat></span> SAT Boost</div>
-        </div>
-        <div class=row>
-            <div class=col-12><button id=update type="button" class="btn btn-dark">Update</button></div>
+            <div class=col-5><span id=boost-sat></span> SAT</div>
         </div>
 
         <div class=accordion id=accordionExample>
@@ -70,7 +71,7 @@
                     data-bs-parent=#accordionExample>
                     <div class=accordion-body>
                         <em>Value 4 Value</em> is a new system for paying podcasters in
-                        <a href=https://coin.info/bitcoin/>Bitcoin</a> for their content by the listening minute, using the
+                        <a href=https://coin.info/bitcoin/>Bitcoin</a> for their content, using the
                         <a href=https://www.bitcoin.com/get-started/what-is-lightning-network />Lightning Network</a>.
                         The Podcast Index has
                         <a href=https://podcastindex.org/podcast/value4value>more info about Value 4 Value</a>
