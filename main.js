@@ -1,7 +1,10 @@
 function modifyUpdateButton(seconds) {
     const button = document.getElementById('update');
-    button.disabled = seconds < 120;
-    button.innerHTML = button.disabled ? "Can update in " + (120-seconds) + " seconds" : 'Update';
+    const timeoutSeconds = 180;
+    button.disabled = seconds < timeoutSeconds;
+    button.innerHTML = button.disabled ?
+      "Can update in " + (timeoutSeconds-seconds) + " seconds" :
+      'Update';
 }
 
 function showDuration(last_updated) {
