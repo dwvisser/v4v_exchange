@@ -68,15 +68,16 @@ function getInput(id_and_store_key) {
 }
 
 async function doFetch() {
-    let request = new Request('https://api.coindesk.com/v1/bpi/currentprice/usd.json');
+    let request = new Request('https://api.coinbase.com/v2/exchange-rates?currency=BTC');
     let response = await fetch(request);
     if (response.ok) {
         let jsonValue = await response.json();
-        let last_updated = luxon.DateTime.fromISO(jsonValue.time.updatedISO);
+        let last_updated = luxon.DateTime.now();
         clearTimeout(timeoutID);
         updateAgo(last_updated);
-        document.querySelector('#usd-per-btc').innerHTML = jsonValue.bpi.USD.rate;
-        usd_per_btc = jsonValue.bpi.USD.rate_float;
+        rate_string = jsonValue.data.rates.USD;
+        document.querySelector('#usd-per-btc').innerHTML = rate_string;
+        usd_per_btc = parseFloat(rate_string);
         calculateView();
     } else {
         throw new Error(`HTTP error! status: ${response.status}`);
