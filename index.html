@@ -25,38 +25,42 @@
             <div class=col-12>As of <span id=date></span> ago:</div>
         </div>
         <div class=row>
-            <div class=col-1></div>
-            <div class=col-11><p>1 BTC = $<span id=usd-per-btc></span></p></div>
+            <span class=col-1></span>
+            <span class=col-11>1 BTC = $<span id=usd-per-btc></span></span>
         </div>
-        <div class=row></div>
+        <div class="row mb-4">
+            <span class=col-1></span>
+            <span class=col-11>1 USD = <span id=sat-per-usd></span></span>
+        </div>
         <div class=row>
             <div class=col-12>Enter $/hr below to calculate SAT/min…</div>
         </div>
-        <div class=row>
-            <div class=col-6>
-                <div class="input-group mb-5">
+        <div class="row mb-4">
+            <span class=col-6>
+                <span class=input-group>
                     <span class=input-group-text>$</span>
                     <input id=usd_per_hr class=form-control type=number aria-label="Hourly rate (to $0.01 precision)"
                         placeholder="1.00" step="0.01" min=0>
                     <span class=input-group-text>/hr</span>
-                </div>
-            </div>
-            <div class=col-1>≅</div>
-            <div class=col-5><span id=sat-rate></span> SAT/min</div>
+                </span>
+            </span>
+            <span class=col-1>≅</span>
+            <span class=col-5><span id=sat-rate></span> SAT/min</span>
         </div>
         <div class=row>
-            <div class=col-12>Enter a $ amount below to compute a one-time <a href=https://www.seetee.io/blog/2022-01-31-whats-in-a-boostagram>Boost</a>…</div>
+            <span class=col-12>Enter a $ amount below to compute a one-time <a
+                    href=https://www.seetee.io/blog/2022-01-31-whats-in-a-boostagram>Boost</a>…</span>
         </div>
-        <div class=row>
-            <div class=col-6>
-                <div class="input-group mb-5">
+        <div class="row mb-4">
+            <span class=col-6>
+                <span class=input-group>
                     <span class=input-group-text>$</span>
                     <input id=boost_usd class=form-control type=number aria-label="Desired Boost $ (to $0.01 precision)"
                         placeholder="1.00" step="0.01" min=0>
-                </div>
-            </div>
-            <div class=col-1>≅</div>
-            <div class=col-5><span id=boost-sat></span> SAT</div>
+                </span>
+            </span>
+            <span class=col-1>≅</span>
+            <span class=col-5><span id=boost-sat></span> SAT</span>
         </div>
 
         <div class=accordion id=accordionExample>
@@ -73,7 +77,7 @@
                         <em>Value 4 Value</em> is a new system for paying podcasters in
                         <a href=https://coin.info/bitcoin>Bitcoin</a> for their content, using the
                         <a href=https://www.bitcoin.com/get-started/what-is-lightning-network>Lightning
-                        Network</a>. The Podcast Index has
+                            Network</a>. The Podcast Index has
                         <a href=https://podcastindex.org/podcast/value4value>more info about Value 4
                             Value</a> and can be used to find
                         <a href=https://podcastindex.org/apps?appTypes=podcast+player&elements=Value>supporting
@@ -92,10 +96,13 @@
                     data-bs-parent=#accordionExample>
                     <div class=accordion-body>
                         <p>This page pulls the current value of BTC in USD from
-                        <a href=https://docs.cdp.coinbase.com/sign-in-with-coinbase/docs/api-exchange-rates>coinbase.com</a>, and
-                        converts the desired dollars per hour into SAT per minute (1 BTC = 100,000,000 SAT).
-                    <a href=https://currency.world/convert/USD/STSH>Currency.world</a>
-                also has a nice interface for viewing the exchange rate.</p>
+                            <a
+                                href=https://docs.cdp.coinbase.com/sign-in-with-coinbase/docs/api-exchange-rates>coinbase.com</a>,
+                            and
+                            converts the desired dollars per hour into SAT per minute (1 BTC = 100,000,000 SAT).
+                            <a href=https://currency.world/convert/USD/STSH>Currency.world</a>
+                            also has a nice interface for viewing the exchange rate.
+                        </p>
                         <p>Do you have a suggestion? Start an issue tracker, wiki page, or pull
                             request at <a href=https://github.com/dwvisser/v4v_exchange>GitHub</a>.
                         </p>

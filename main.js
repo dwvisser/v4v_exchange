@@ -78,6 +78,9 @@ async function doFetch() {
         rate_string = jsonValue.data.rates.USD;
         document.querySelector('#usd-per-btc').innerHTML = rate_string;
         usd_per_btc = parseFloat(rate_string);
+        const sat_per_btc = 100000000;
+        sat_per_usd = sat_per_btc / usd_per_btc;
+        document.querySelector('#sat-per-usd').innerHTML = Math.round(sat_per_usd) + " SAT"
         calculateView();
     } else {
         throw new Error(`HTTP error! status: ${response.status}`);
