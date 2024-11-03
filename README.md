@@ -10,3 +10,8 @@ Easy, just use the Python built-in HTTP server.
 ```shell
 python3 -m http.server
 ```
+
+## Using Docker
+
+An AMD64 image is hosted at https://hub.docker.com/repository/docker/dalevisser/v4v-exchange/general.
+Instructions are posted there on using it.
