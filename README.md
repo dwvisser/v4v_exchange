@@ -13,5 +13,5 @@ python3 -m http.server
 
 ## Using Docker
 
-An AMD64 image is hosted at https://hub.docker.com/repository/docker/dalevisser/v4v-exchange/general.
+An AMD64 image is hosted at https://hub.docker.com/repository/docker/dalevisser/v4v-exchange/.
 Instructions are posted there on using it.
